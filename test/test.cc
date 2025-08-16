@@ -368,7 +368,7 @@ TEST_CASE("Subscribe2", "[format]") {
     mqtt_sn::Subscribe subscribe;
     subscribe.flags.topic_id_type = static_cast<uint8_t>(mqtt_sn::TopicIdType::PreDefined);
     subscribe.message_id = 1;
-    subscribe.topic = 2;
+    subscribe.topic = uint16_t(2);
 
     mqtt_sn::format::BufferWriter buffer;
     mqtt_sn::format::encode(subscribe, buffer);
@@ -384,7 +384,7 @@ TEST_CASE("Subscribe3", "[format]") {
     mqtt_sn::Subscribe subscribe;
     subscribe.flags.topic_id_type = static_cast<uint8_t>(mqtt_sn::TopicIdType::Short);
     subscribe.message_id = 1;
-    subscribe.topic = 0x7474; // "tt"
+    subscribe.topic = uint16_t(0x7474); // "tt"
 
     mqtt_sn::format::BufferWriter buffer;
     mqtt_sn::format::encode(subscribe, buffer);
@@ -432,7 +432,7 @@ TEST_CASE("Unsubscribe2", "[format]") {
     mqtt_sn::Unsubscribe unsubscribe;
     unsubscribe.flags.topic_id_type = static_cast<uint8_t>(mqtt_sn::TopicIdType::PreDefined);
     unsubscribe.message_id = 1;
-    unsubscribe.topic = 2;
+    unsubscribe.topic = uint16_t(2);
 
     mqtt_sn::format::BufferWriter buffer;
     mqtt_sn::format::encode(unsubscribe, buffer);
