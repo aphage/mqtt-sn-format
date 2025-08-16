@@ -181,7 +181,7 @@ optional<Message> parse(BufferReader& buffer) {
             auto sub = Unsubscribe {
                 buffer.read<MessageFlags>().value(),
                 buffer.read<uint16_t>().value(),
-                0
+                uint16_t(0)
             };
             auto topic_type = static_cast<TopicIdType>(sub.flags.topic_id_type);
             if (topic_type == TopicIdType::Normal) {
