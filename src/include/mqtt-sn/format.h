@@ -77,18 +77,16 @@ enum class MessageType : uint8_t {
     Forward           = 0xFE
 };
 
-struct MessageFlags {
-    union {
-        struct {
-            uint8_t dup : 1;
-            uint8_t qos : 2;
-            uint8_t retain : 1;
-            uint8_t will : 1;
-            uint8_t clean_session : 1;
-            uint8_t topic_id_type : 2;
-        };
-        uint8_t value;
+union MessageFlags {
+    struct {
+        uint8_t dup : 1;
+        uint8_t qos : 2;
+        uint8_t retain : 1;
+        uint8_t will : 1;
+        uint8_t clean_session : 1;
+        uint8_t topic_id_type : 2;
     };
+    uint8_t value;
 };
 
 struct Advertise {
